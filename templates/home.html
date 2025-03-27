@@ -11,15 +11,23 @@
                 height: 360px;
                 width: 100%;
                 object-fit: cover  ;
+                margin-bottom: 16px;
             }
         </style>
     </head>
     <body>
+        {% include 'nav.html' %}
+        <img class = "img-fluid" id = "banner" src="{{ url_for('static', filename='banner.jpg') }}" alt="Banner" height = "320">
         <div class = "container">
             <h1 class="text-center mt-2 mb-4">jovian careers</h1>
-            <img class = "img-fluid" id = "banner" src="{{ url_for('static', filename='banner.jpg') }}" alt="Banner" height = "320">
-            <h2 class="text-center mt-2 mb-4">about jovian</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="row" style="margin-bottom: 16px;">
+                <div class="col-md-6">
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="d-none d-md-block col-6">
+                    <img src="/static/peopleworking.jpg" style="height: 320px; border-radius: 4px;">
+                </div>
+            </div>
             <h2 class="text-center">open positions</h2>
             <p>
                 {%for job in jobs%}
@@ -28,9 +36,9 @@
             </p>
             <div class = "text-center">
                 <button type="button" class="btn btn-primary btn-lg">contact us</button>
-                <p class="mt-2">Copyright 2024</p>
             </div>
             
         </div>
+        {% include 'footer.html' %}
     </body>
 </html>
