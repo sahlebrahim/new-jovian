@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {{ job.title }} - Jovian careers
+        </title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        {% include 'nav.html' %}
+        {% include 'banner.html' %}
+        <div class="container">
+        <h1 class="text-center mt-2 mb-4">Jovian Careers</h1>
+        <h2 class="mb-0">{{ job.title }}</h2>
+        <p class="lead">{{ job.location }}</p>
+        
+        <h3>Responsibilities</h3>
+        <p>{{ job.responsibilities }}</p>
+        <h3>Requirements</h3>
+        <p>{{ job.requirements }}</p>
+        <h3>Salary</h3>
+        <p>{{ job.currency }}{{ job.salary }}</p>
+        
+    </div>
+        {% include 'footer.html' %}
+    </body>
+</html>
