@@ -1,34 +1,27 @@
 from flask import Flask,render_template
+from database import engine
+from sqlalchemy import text
 
 app = Flask(__name__)
 
-JOBS = [
-    {'id': 1,
-     'title': 'data analyst',
-     'location': 'Bengaluru,india',
-     'salary': 'Rs. 8,00,000',
-    },
-    {'id': 2,
-     'title': 'software engineer',
-     'location': 'Hyderabad,india',
-     'salary': 'Rs. 10,00,000',
-    },
-    {'id': 3,
-     'title': 'project manager',
-     'location': 'Chennai,india',
-     #'salary': 'Rs. 12,00,000',
-    },
-    {'id': 4,
-     'title': 'Backend Engineer',
-     'location': 'San francisco,USA',
-     'salary': '$120000',
-    }
-]
+
+
+def load_jobs():
+    with engine.connect() as conn:
+      result = conn.execute(text("select * from jobs"))
+      result_dicts = []
+      for row in result.all():
+          #The ._mapping attribute in SQLAlchemy Row objects provides dictionary-like access to the data in a database row.
+          result_dicts.append(dict(row._mapping))
+      
+    return result_dicts
 
 
 @app.route("/")
 def hello_world():
-    return render_template("home.html",jobs = JOBS)
+    jobs = load_jobs()
+    print(jobs)
+    return render_template("home.html",jobs = jobs)
 
 if __name__=="__main__":
     app.run(host='0.0.0.0',debug=True)

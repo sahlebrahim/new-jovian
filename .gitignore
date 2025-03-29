@@ -177,3 +177,7 @@ cython_debug/
 flaskexplanations.md
 vscexplanations.md
 renderexplanation.md
+azuremysqlexplanations.md
+git explanations.md
+DigiCertGlobalRootG2.crt.pem
+.vscode/
