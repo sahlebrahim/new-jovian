@@ -20,7 +20,6 @@ def load_jobs():
 @app.route("/")
 def hello_world():
     jobs = load_jobs()
-    print(jobs)
     return render_template("home.html",jobs = jobs)
 
 if __name__=="__main__":
